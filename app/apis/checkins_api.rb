@@ -13,6 +13,8 @@ class CheckinsApi < Grape::API
     optional :user_id, type: String, desc: "The ID of the user checking in"
     optional :lattitude, type: String, desc: "The lattitude at which the user is checking in"
     optional :longitude, type: String, desc: "The longitude at which the user is checking in"
+    optional :hemi_n_s, type: String, desc: "The North/South hemisphere"
+    optional :hemi_e_w, type: String, desc: "The East/West hemisphere"
   end
 
   post do
@@ -35,6 +37,8 @@ class CheckinsApi < Grape::API
       optional :user_id, type: String, desc: "The ID of the user checking in"
       optional :lattitude, type: String, desc: "The lattitude at which the user is checking in"
       optional :longitude, type: String, desc: "The longitude at which the user is checking in"
+      optional :hemi_n_s, type: String, desc: "The North/South hemisphere"
+      optional :hemi_e_w, type: String, desc: "The East/West hemisphere"
     end
     put do
       # fetch checkin record and update attributes.  exceptions caught in app.rb
