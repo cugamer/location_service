@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160409192102) do
     t.string   "location_title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "company_id"
   end
 
 end
