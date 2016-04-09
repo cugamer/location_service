@@ -10,6 +10,7 @@ class LocationsApi < Grape::API
 
   desc 'Create a location'
   params do
+    optional :company_id, type: String, desc: "The id of the company using the API"
     optional :location_title, type: String, desc: "The name of the location being tracked"
     optional :lattitude, type: String, desc: "The lattitude at which the user is checking in"
     optional :longitude, type: String, desc: "The longitude at which the user is checking in"
@@ -34,6 +35,7 @@ class LocationsApi < Grape::API
 
     desc 'Update a location'
     params do
+      optional :company_id, type: String, desc: "The id of the company using the API"
       optional :location_title, type: String, desc: "The name of the location being tracked"
       optional :lattitude, type: String, desc: "The lattitude at which the user is checking in"
       optional :longitude, type: String, desc: "The longitude at which the user is checking in"

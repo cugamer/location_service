@@ -1,6 +1,7 @@
 class LocationRepresenter < Napa::Representer
   property :id, type: String
 
+  property :company_id, type: String
   property :location_title, type: String
   property :lattitude, type: String
   property :longitude, type: String
