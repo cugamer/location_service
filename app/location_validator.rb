@@ -1,4 +1,4 @@
-class DuplicateCoordinateValidator < ActiveModel::Validator
+class DuplicateLocationValidator < ActiveModel::Validator
 	def validate(record)
 		current_coord = Location.find_by(lattitude: record[:lattitude] )
 		if(current_coord && 
