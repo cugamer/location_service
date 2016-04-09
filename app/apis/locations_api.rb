@@ -8,7 +8,7 @@ class LocationsApi < Grape::API
     represent locations, with: LocationRepresenter
   end
 
-  desc 'Create an location'
+  desc 'Create a location'
   params do
     optional :location_title, type: String, desc: "The name of the location being tracked"
     optional :lattitude, type: String, desc: "The lattitude at which the user is checking in"
@@ -26,13 +26,13 @@ class LocationsApi < Grape::API
     requires :id, desc: 'ID of the location'
   end
   route_param :id do
-    desc 'Get an location'
+    desc 'Get a location'
     get do
       location = Location.find(params[:id])
       represent location, with: LocationRepresenter
     end
 
-    desc 'Update an location'
+    desc 'Update a location'
     params do
       optional :location_title, type: String, desc: "The name of the location being tracked"
       optional :lattitude, type: String, desc: "The lattitude at which the user is checking in"
