@@ -19,8 +19,13 @@ class LocationsApi < Grape::API
   end
 
   post do
-    location = Location.create!(permitted_params)
-    represent location, with: LocationRepresenter
+    # location = Location.create!(permitted_params)
+    location = Location.new(permitted_params)
+    if location.save
+      represent location, with: LocationRepresenter
+    else
+      return location.errors.full_messages
+    end
   end
 
   params do
