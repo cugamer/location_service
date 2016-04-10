@@ -20,6 +20,9 @@ class CheckinsApi < Grape::API
   post do
     # checkin = Checkin.create!(permitted_params)
     checkin = Checkin.new(permitted_params)
+    p "---------------------------------------"
+    p permitted_params[:lattitude]
+    p permitted_params[:longitude]
     if checkin.save
       represent checkin, with: CheckinRepresenter
     else

@@ -1,6 +1,7 @@
 class Checkin < ActiveRecord::Base
 	LATTITUDE_FORMAT = /\d{1,2}\.\d{4}/
 	LONGITUDE_FORMAT = /\d{1,3}\.\d{4}/
+
 	N_S_FORMAT = /[nN,sS]/
 	E_W_FORMAT = /[eE,wW]/	
 

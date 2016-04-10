@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409232353) do
+ActiveRecord::Schema.define(version: 20160410154646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20160409232353) do
     t.string   "hemi_n_s"
     t.string   "hemi_e_w"
     t.integer  "user_id"
-    t.decimal  "lattitude"
-    t.decimal  "longitude"
+    t.string   "lattitude"
+    t.string   "longitude"
   end
 
   create_table "locations", force: true do |t|
@@ -33,10 +33,9 @@ ActiveRecord::Schema.define(version: 20160409232353) do
     t.string   "location_title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "company_id"
+    t.integer  "company_id"
   end
 
-  add_index "locations", ["company_id"], name: "index_locations_on_company_id", using: :btree
   add_index "locations", ["lattitude"], name: "index_locations_on_lattitude", using: :btree
 
 end
