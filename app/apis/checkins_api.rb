@@ -20,9 +20,6 @@ class CheckinsApi < Grape::API
   post do
     # checkin = Checkin.create!(permitted_params)
     checkin = Checkin.new(permitted_params)
-    p "---------------------------------------"
-    p permitted_params[:lattitude]
-    p permitted_params[:longitude]
     if checkin.save
       represent checkin, with: CheckinRepresenter
     else
@@ -53,6 +50,14 @@ class CheckinsApi < Grape::API
       checkin = Checkin.find(params[:id])
       checkin.update_attributes!(permitted_params)
       represent checkin, with: CheckinRepresenter
+    end
+
+    desc "Delete a checkin"
+    delete do
+      check = Checkin.find(params[:id])
+      if check.destroy
+        return "Checkin #{check[:id]} has been removed successfully"
+      end
     end
   end
 end

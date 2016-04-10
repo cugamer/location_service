@@ -53,5 +53,13 @@ class LocationsApi < Grape::API
       location.update_attributes!(permitted_params)
       represent location, with: LocationRepresenter
     end
+
+    desc "Delete a location"
+    delete do
+      loc = Location.find(params[:id])
+      if loc.destroy
+        return "Location #{loc[:id]} has been removed successfully"
+      end
+    end
   end
 end
