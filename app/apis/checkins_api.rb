@@ -18,8 +18,13 @@ class CheckinsApi < Grape::API
   end
 
   post do
-    checkin = Checkin.create!(permitted_params)
-    represent checkin, with: CheckinRepresenter
+    # checkin = Checkin.create!(permitted_params)
+    checkin = Checkin.new(permitted_params)
+    if checkin.save
+      represent checkin, with: CheckinRepresenter
+    else
+      return { errors: checkin.errors.full_messages }
+    end
   end
 
   params do

@@ -24,7 +24,7 @@ class LocationsApi < Grape::API
     if location.save
       represent location, with: LocationRepresenter
     else
-      return location.errors.full_messages
+      return { errors: location.errors.full_messages }
     end
   end
 
