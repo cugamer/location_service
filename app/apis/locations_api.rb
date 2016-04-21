@@ -2,7 +2,14 @@ class LocationsApi < Grape::API
   desc 'Get a list of locations'
   params do
     optional :ids, type: Array, desc: 'Array of location ids'
+    optional :company_id, desc: 'ID of the company'
   end
+
+  get do
+    locations = params[:company_id] ? Location.where(company_id: params[:company_id]) : "Company with that ID not found"
+    represent locations, with: LocationRepresenter
+  end
+
   get do
     locations = params[:ids] ? Location.where(id: params[:ids]) : Location.all
     represent locations, with: LocationRepresenter
@@ -30,6 +37,7 @@ class LocationsApi < Grape::API
 
   params do
     requires :id, desc: 'ID of the location'
+
   end
   route_param :id do
     desc 'Get a location'
